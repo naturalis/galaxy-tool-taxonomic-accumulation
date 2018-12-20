@@ -11,7 +11,7 @@
 # - sudo pip install xlrd
 
 # Galaxy prequisites:
-# - sudo ln -s /path/to/folder/galaxy-tool-taxonomic-accumulator/runTaxonomicAccumulator.py 
+# - sudo ln -s /path/to/folder/galaxy-tool-taxonomic-accumulation/runTaxonomicAccumulator.py 
 #              /usr/local/bin/runTaxonomicAccumulator.py
 
 # Imports
