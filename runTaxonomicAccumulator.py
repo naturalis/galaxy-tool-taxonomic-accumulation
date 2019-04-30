@@ -4,15 +4,8 @@
 # Author: Jasper Boom
 
 # Prequisites:
-# - sudo apt-get install python
-# - sudo apt-get install python-pip
-# - sudo pip install pandas
-# - sudo pip install xlsxwriter
-# - sudo pip install xlrd
-
-# Galaxy prequisites:
-# - sudo ln -s /path/to/folder/galaxy-tool-taxonomic-accumulation/runTaxonomicAccumulator.py 
-#              /usr/local/bin/runTaxonomicAccumulator.py
+# installed via <requirements> in xml: python, pandas, xlsxwriter and xlrd
+# all are handled by python2 env of conda (pip has become obsolete)
 
 # Imports
 import os
