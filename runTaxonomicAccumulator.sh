@@ -4,15 +4,8 @@
 # Author: Jasper Boom
 
 # Prequisites:
-# - sudo apt-get install python
-# - sudo apt-get install python-pip
-# - sudo pip install pandas
-# - sudo pip install xlsxwriter
-# - sudo pip install xlrd
-
-# Galaxy prequisites:
-# - sudo ln -s /path/to/folder/galaxy-tool-taxonomic-accumulation/runTaxonomicAccumulator.py 
-#              /usr/local/bin/runTaxonomicAccumulator.py
+# installed via <requirements> in xml: python, pandas, xlsxwriter and xlrd
+# all are handled by python2 env of conda (pip has become obsolete)
 
 # The getZipOutput function.
 # This function copies the input file to the temporary storage directory. The
@@ -21,14 +14,18 @@
 # temporary zip directory. The runTaxonomicAccumulator.py script is called,
 # the output is send to the expected location and the temporary storage
 # directory is deleted.
+
+
+SCRIPTDIR=$(dirname "$(readlink -f "$0")")
+
 getZipOutput() {
-    cp ${fisInput} ${strDirectory}_temp
-    strZipName=$(find ${strDirectory}_temp -name "*.dat" -printf "%f\n")
-    unzip -q ${strDirectory}_temp/${strZipName} -d ${strDirectory}_temp
-    runTaxonomicAccumulator.py -o ${strDirectory}_temp/temporary.xlsx\
-                               -t ${strDirectory}_temp/ -f ${disFormat}
-    cat ${strDirectory}_temp/temporary.xlsx > ${fosOutput}
-    rm -rf ${strDirectory}_temp
+    cp ${fisInput} ${strDirectory_temp}
+    strZipName=$(find ${strDirectory_temp} -name "*.dat" -printf "%f\n")
+    unzip -q ${strDirectory_temp}/${strZipName} -d ${strDirectory_temp}
+    python $SCRIPTDIR"/runTaxonomicAccumulator.py" -o ${strDirectory_temp}/temporary.xlsx\
+                               -t ${strDirectory_temp}/ -f ${disFormat}
+    cat ${strDirectory_temp}/temporary.xlsx > ${fosOutput}
+    rm -rf ${strDirectory_temp}
 }
 
 # The getFormatFlow function.
@@ -37,16 +34,15 @@ getZipOutput() {
 # Afther the accumulation processes are done, the output is send to the
 # expected location and the temporary storage directory is deleted.
 getFormatFlow() {
-    strDirectory=${fosOutput::-4}
-    mkdir -p "${strDirectory}_temp"
+  strDirectory_temp=$(mktemp -d /media/GalaxyData/database/files/XXXXXX)
     if [ "${disFormat}" = "blast" ] || [ "${disFormat}" = "otu_old" ] ||\
        [ "${disFormat}" = "otu_new" ] || [ "${disFormat}" = "lca" ]
     then
         runTaxonomicAccumulator.py -i ${fisInput}\
-                                   -o ${strDirectory}_temp/temporary.xlsx\
+                                   -o ${strDirectory_temp}/temporary.xlsx\
                                    -f ${disFormat}
-        cat ${strDirectory}_temp/temporary.xlsx > ${fosOutput}
-        rm -rf ${strDirectory}_temp
+        cat ${strDirectory_temp}/temporary.xlsx > ${fosOutput}
+        rm -rf ${temp_outdir}
     elif [ "${disFormat}" = "zip" ]
     then
         getZipOutput
