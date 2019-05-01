@@ -16,7 +16,7 @@ git clone https://github.com/naturalis/galaxy-tool-taxonomic-accumulation
 ```
 Add the following line to /home/galaxy/galaxy/config/tool_conf.xml
 ```
-<tool file="/home/galaxy/Tools/galaxy-tool-manage-zip/manage_zip.xml" />
+<tool file="/home/galaxy/Tools/galaxy-tool-taxonomic-accumulation/runTaxonomicAccumulator.xml" />
 ```
 
 ## Outlink
