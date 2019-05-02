@@ -38,7 +38,7 @@ getFormatFlow() {
     if [ "${disFormat}" = "blast" ] || [ "${disFormat}" = "otu_old" ] ||\
        [ "${disFormat}" = "otu_new" ] || [ "${disFormat}" = "lca" ]
     then
-        runTaxonomicAccumulator.py -i ${fisInput}\
+        python $SCRIPTDIR"/runTaxonomicAccumulator.py" -i ${fisInput}\
                                    -o ${strDirectory_temp}/temporary.xlsx\
                                    -f ${disFormat}
         cat ${strDirectory_temp}/temporary.xlsx > ${fosOutput}
