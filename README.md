@@ -21,7 +21,7 @@ Add the following line to /home/galaxy/galaxy/config/tool_conf.xml
 
 ## Outlink
 This tool was written by Jasper Boom and modified to run on Galaxy v.19.01 in Ubuntu 18.04 LTS.
-The original repository is located here: https://github.com/JasperBoom/galaxy-tool-taxonomic-accumulation
+The original repository is located here: https://github.com/JasperBoom/galaxy-tool-taxonomic-accumulator
 
 
 ## Source(s)
