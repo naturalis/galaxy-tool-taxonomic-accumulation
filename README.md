@@ -7,7 +7,7 @@ All columns in a OTU table should have a header starting with "#".
 # Getting started
 
 ### Install
-Login to the galaxy-server as user `galaxy`. Installing the tool:
+(user: **galaxy**)
 ```
 cd /home/galaxy/Tools
 ```
