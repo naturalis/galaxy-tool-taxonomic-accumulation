@@ -67,7 +67,7 @@ def getAccumulationZip(dirTemporary, flOutput, lstTaxonRanks):
     for strFiles in os.listdir(dirTemporary):
         if strFiles.endswith(".tabular"):
             tblReadInput = pd.read_table(dirTemporary + strFiles)
-            for strRow in tblReadInput["Taxonomy"]:
+            for strRow in tblReadInput["#Taxonomy"]:
                 strTaxonLine = strRow.split("/")
                 strTaxonLine = [strName.strip(" ") for strName in strTaxonLine]
                 for intTaxonPosition in range(7):
@@ -80,7 +80,7 @@ def getAccumulationZip(dirTemporary, flOutput, lstTaxonRanks):
                             lstTaxonDics[intTaxonPosition][intFileCounter][
                                          strTaxonLine[intTaxonPosition]] = 1
                     except IndexError:
-                        pass                            
+                        pass
             intFileCounter += 1
     getZipOutput(flOutput, lstFileNames, lstTaxonDics, lstTaxonRanks)
 
@@ -223,7 +223,7 @@ def getBlastOutput(flOutput, lstTaxonDics, lstTaxonRanks):
 def getAccumulationBlast(flInput, flOutput, lstTaxonRanks):
     tblReadInput = pd.read_table(flInput)
     lstTaxonDics = [{} for intTaxonCount in range(7)]
-    for strRow in tblReadInput["Taxonomy"]:
+    for strRow in tblReadInput["#Taxonomy"]:
         strTaxonLine = strRow.split("/")
         strTaxonLine = [strName.strip(" ") for strName in strTaxonLine]
         for intTaxonPosition in range(7):
