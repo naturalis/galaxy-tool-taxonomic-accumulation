@@ -80,7 +80,7 @@ def getAccumulationZip(dirTemporary, flOutput, lstTaxonRanks):
                             lstTaxonDics[intTaxonPosition][intFileCounter][
                                          strTaxonLine[intTaxonPosition]] = 1
                     except IndexError:
-                        pass                            
+                        pass
             intFileCounter += 1
     getZipOutput(flOutput, lstFileNames, lstTaxonDics, lstTaxonRanks)
 
