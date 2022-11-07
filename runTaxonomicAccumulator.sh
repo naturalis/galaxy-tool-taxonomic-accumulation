@@ -15,8 +15,7 @@
 # along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 # Prequisites:
-# installed via <requirements> in xml: python, pandas, xlsxwriter and xlrd
-# all are handled by python2 env of conda (pip has become obsolete)
+# installed via <requirements> in xml: python, pandas, xlsxwriter and xlrd.
 
 # The getZipOutput function.
 # This function copies the input file to the temporary storage directory. The
@@ -26,8 +25,17 @@
 # the output is send to the expected location and the temporary storage
 # directory is deleted.
 
-
 SCRIPTDIR=$(dirname "$(readlink -f "$0")")
+
+# sanity check
+printf "Conda env: $CONDA_DEFAULT_ENV\n"
+printf "Python version: $(python --version |  awk '{print $2}')\n"
+printf "Numpy version: $(conda list | egrep numpy | awk '{print $2}')\n"
+printf "Xlsxwriter version: $(conda list | egrep xlsxwriter | awk '{print $2}')\n"
+printf "Xlrd version: $(conda list | egrep xlrd | awk '{print $2}')\n"
+printf "Unzip version: $(unzip -v | head -n1 | awk '{print $2}')\n"
+printf "Bash version: ${BASH_VERSION}\n"
+printf "SCRIPTDIR: $SCRIPTDIR\n\n"
 
 getZipOutput() {
     cp ${fisInput} ${strDirectory_temp}
@@ -45,7 +53,7 @@ getZipOutput() {
 # Afther the accumulation processes are done, the output is send to the
 # expected location and the temporary storage directory is deleted.
 getFormatFlow() {
-  strDirectory_temp=$(mktemp -d /media/GalaxyData/database/files/XXXXXX)
+  strDirectory_temp=$(mktemp -d /data/files/XXXXXX)
     if [ "${disFormat}" = "blast" ] || [ "${disFormat}" = "otu_old" ] ||\
        [ "${disFormat}" = "otu_new" ] || [ "${disFormat}" = "lca" ]
     then
