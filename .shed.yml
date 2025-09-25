@@ -1,0 +1,13 @@
+name: naturalis_taxonomic_accumulation
+owner:  luka
+description: "Accumulate and count identifications at all taxonomic levels." 
+long_description: |
+  "Accumulate and count identifications at all taxonomic levels.".
+remote_repository_url: https://github.com/naturalis/galaxy-tool-taxonomic-accumulation.git
+homepage_url: https://github.com/naturalis/galaxy-tool-taxonomic-accumulation.git
+type: unrestricted
+categories:
+   - Metagenomics
+auto_tool_repositories:
+  name_template: naturalis_taxonomic_accumulation
+  description_template: naturalis_taxonomic_accumulation
